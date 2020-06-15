@@ -1,2 +1,2 @@
-# Solution to Compititiv programming problems
+# Solution to Compititive programming problems
 
