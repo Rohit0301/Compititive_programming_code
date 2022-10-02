@@ -1,0 +1,46 @@
+// longest-consecutive-sequence
+
+// solution
+
+
+class Solution {
+public:
+    int longestConsecutive(vector<int>& nums) {
+        
+        int n=nums.size();
+        unordered_map<int,int>mp;
+        
+        for(int i=0;i<n;i++)
+            mp[nums[i]]=0;
+        
+        int el1,el2,c1,c2;
+        int ans=0;
+        
+        for(int i=0;i<n;i++){
+            el1=nums[i]-1;
+            el2=nums[i]+1;c1=0;c2=0;
+            
+            if(mp[nums[i]]==1)
+                continue;
+            
+            while(mp.find(el1)!=mp.end()){
+                c1++;
+                mp[el1]=1;
+              //  mp[el1]--;
+                el1--;
+                
+            }
+            while(mp.find(el2)!=mp.end()){
+                c2++;
+                mp[el2]=1;
+               // mp[el2]--;
+                el2++;
+                
+            }
+            mp[nums[i]]=1;
+            ans=max(ans,(c1+c2+1));
+        }
+        
+        return ans;
+    }
+};
