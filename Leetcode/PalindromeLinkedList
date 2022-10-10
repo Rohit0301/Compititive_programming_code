@@ -1,0 +1,26 @@
+class Solution {
+  bool isPalindrome(ListNode? head) {
+    // to store the values
+    List<int> array = [];
+    // if there is value we will add into our list
+    if (head != null) {
+      array.add(head.val);
+      // pointing it to the next value
+      head = head.next;
+    }
+    // now all the values is inside the list so let's work on list
+    // - pointer on the lift value
+    int left = 0;
+    // pointer on the right value
+    int right = array.length - 1;
+    // assuming that he value on left side is less than the right side
+    while (left < right) {
+      // reading forward values from left side via ++
+      // reading it backward values via --
+
+      // from forward to backward are not same than  it's not palindrome
+      if (array[left++] != array[right--]) return false;
+    }
+    return true;
+  }
+}
