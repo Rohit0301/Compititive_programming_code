@@ -1,0 +1,22 @@
+class Solution:
+    def getHint(self, secret: str, guess: str) -> str:
+        
+        hash_set = {}
+        bulls = 0
+        cows = 0
+        
+        for i in range(0 , len(secret)):
+            if guess[i] == secret[i]:
+                bulls += 1
+            else:
+                if secret[i] in hash_set:
+                    hash_set[secret[i]] += 1
+                else:
+                    hash_set[secret[i]] = 1
+        
+        for i in range(0 , len(guess)):
+            if guess[i] != secret[i] and guess[i] in hash_set and hash_set[guess[i]] > 0:
+                cows += 1
+                hash_set[guess[i]] -= 1      
+        
+        return f'{bulls}A{cows}B'
